@@ -1,0 +1,101 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1641167056000,
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson",
+        "title": "USGS Significant Earthquakes, Past Week",
+        "status": 200,
+        "api": "1.10.3",
+        "count": 2
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 7.3,
+                "place": "121 km NNE of Lospalos, Timor Leste",
+                "time": 1640802351877,
+                "updated": 1640889003037,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000g7lx",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000g7lx.geojson",
+                "felt": 117,
+                "cdi": 7,
+                "mmi": 6.958,
+                "alert": "green",
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 902,
+                "net": "us",
+                "code": "7000g7lx",
+                "ids": ",us7000g7lx,",
+                "sources": ",us,",
+                "types": ",dyfi,finite-fault,general-text,ground-failure,losspager,moment-tensor,origin,phase-data,shakemap,",
+                "nst": null,
+                "dmin": 3.704,
+                "rms": 1.13,
+                "gap": 15,
+                "magType": "mww",
+                "type": "earthquake",
+                "title": "M 7.3 - 121 km NNE of Lospalos, Timor Leste"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    127.5808,
+                    -7.5924,
+                    166.92
+                ]
+            },
+            "id": "us7000g7lx"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 3.3,
+                "place": "5 km SSW of Lugoff, South Carolina",
+                "time": 1640632734200,
+                "updated": 1641138272758,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/se60377836",
+                "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/se60377836.geojson",
+                "felt": 3189,
+                "cdi": 5.6,
+                "mmi": 4.385,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 728,
+                "net": "se",
+                "code": "60377836",
+                "ids": ",se60377836,us6000gfns,",
+                "sources": ",se,us,",
+                "types": ",dyfi,origin,phase-data,shakemap,",
+                "nst": 19,
+                "dmin": 0.3184,
+                "rms": 0.4,
+                "gap": 62,
+                "magType": "mlg",
+                "type": "earthquake",
+                "title": "M 3.3 - 5 km SSW of Lugoff, South Carolina"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.7196667,
+                    34.1825,
+                    3.16
+                ]
+            },
+            "id": "se60377836"
+        }
+    ],
+    "bbox": [
+        -80.7196667,
+        -7.5924,
+        3.16,
+        127.5808,
+        34.1825,
+        166.92
+    ]
+}

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Chess",
+        "author": "Scott Cawks",
+        "read": false
+    },
+    {
+        "name": "Roger Willcox",
+        "author": "Margaret Thatcher",
+        "read": true
+    }
+]
