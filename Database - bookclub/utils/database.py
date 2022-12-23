@@ -1,27 +1,42 @@
 #used to store and retrieve books from a list
-import json
+import sqlite3
 
 books_file = "books.json"
 
 def create_book_table():
-    with open(books_file, 'w') as file:
-        json.dump([],file)
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
 
-def _save_book(books):
-    with open(books_file, 'w') as file_object:
-        json.dump(books, file_object, indent=4)
+    cursor.execute('CREATE TABLE IF NOT EXISTS books(name text primary key, author text, read integer)')
+
+    connection.commit()
+    connection.close()
+
 
 def _load_book():
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
 
-    with open(books_file, 'r') as file_object:
-        return json.load(file_object)
+    cursor.execute('SELECT * FROM books')
+    books = [{'name': row[0], 'author': row[1], 'read': row[2]} for row in cursor.fetchall()]
+
+    connection.close()
+
+    return books
+
 
 def add_book():
     name = input("Enter book name:")
     author = input('Enter book Author:')
-    books = _load_book()
-    books.append({'name': name, 'author': author, 'read': False})
-    _save_book(books)
+
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+
+
+    cursor.execute('INSERT INTO books VALUES(?, ?, 0)',(name, author))
+
+    connection.commit()
+    connection.close()
 
 
 
@@ -29,20 +44,31 @@ def list_books():
     books = _load_book()
     for i in books:
         print(f"{i['name']} by {i['author']}")
-        print(f"Has been Read? {i['read']}\n")
+        read = 'YES' if i['read'] else 'NO'
+        print(f"Has been Read? {read}\n")
 
 def read_book():
-    books = _load_book()
-    read = input("Which book have you read?")
-    for i in books:
-        if read == i['name']:
-            i['read'] = True
-    _save_book(books)
+
+    name = input("Which book have you read?")
+
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+
+    cursor.execute('UPDATE books SET read=1 WHERE name = ?',(name,))
+
+    connection.commit()
+    connection.close()
+
+
 
 def delete_book():
-    books = _load_book()
-    delete = input("Which book would you like to delete?")
-    for i in books:
-        if delete == i['name']:
-            books.remove(i)
-    _save_book(books)
+
+    name = input("Which book would you like to delete?")
+
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+
+    cursor.execute('DELETE FROM books WHERE name = ?', (name,))
+
+    connection.commit()
+    connection.close()
