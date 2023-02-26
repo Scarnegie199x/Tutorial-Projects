@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h2>Welcome to Rock, Paper, Scissors!</h2>
+
+    <p>Please choose:</p>
+    <button onclick="playRockPaperScissors('rock', computerSelection)">Rock</button>
+    <button onclick="playRockPaperScissors('paper', computerSelection)">Paper</button>
+    <button onclick="playRockPaperScissors('scissors', computerSelection)">Scissors</button>
+</body>
+<script>
+
+    const computerSelection = getComputerChoice();
+
+    function getComputerChoice(){
+        computerChoice = Math.floor(Math.random()*3)+1;
+        if (computerChoice == 1){
+            return "rock";
+        }
+        else if (computerChoice == 2){
+            return "paper";
+        }
+        else {
+            return "scissors";
+        }
+        
+    }
+    function playRockPaperScissors(playerSelection, computerSelection){
+        
+
+        if (playerSelection == computerSelection){
+            return alert("Tie! Both chose " + playerSelection)
+        }
+        else if ((playerSelection == "rock" && computerSelection == "scissors") ||
+                (playerSelection == "paper" && computerSelection == "rock") ||   
+                (playerSelection == "scissors" && computerSelection == "paper"))
+            {
+            return alert("You win! " + playerSelection +" beats "+ computerSelection+"!")
+        }
+        else {
+            return alert("you lose! " + computerSelection + " beats " + playerSelection+"!")
+        }
+    }
+
+    
+
+    
+</script>
+</html>
