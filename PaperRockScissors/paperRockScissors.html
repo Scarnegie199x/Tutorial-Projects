@@ -12,10 +12,16 @@
     <button onclick="playRockPaperScissors('rock', computerSelection)">Rock</button>
     <button onclick="playRockPaperScissors('paper', computerSelection)">Paper</button>
     <button onclick="playRockPaperScissors('scissors', computerSelection)">Scissors</button>
-</body>
+
+    <div id="result">
+
+    </div>
+
 <script>
 
     const computerSelection = getComputerChoice();
+    const container = document.getElementById('result');
+    
 
     function getComputerChoice(){
         computerChoice = Math.floor(Math.random()*3)+1;
@@ -32,23 +38,37 @@
     }
     function playRockPaperScissors(playerSelection, computerSelection){
         
+        
+
+
 
         if (playerSelection == computerSelection){
-            return alert("Tie! Both chose " + playerSelection)
+
+            return container.textContent= "Tie! Both chose " + playerSelection
+            
+            
+
         }
         else if ((playerSelection == "rock" && computerSelection == "scissors") ||
                 (playerSelection == "paper" && computerSelection == "rock") ||   
                 (playerSelection == "scissors" && computerSelection == "paper"))
             {
-            return alert("You win! " + playerSelection +" beats "+ computerSelection+"!")
+            return container.textContent= "You win! " + playerSelection +" beats "+ computerSelection+"!";
+            
+            
+
+            
         }
         else {
-            return alert("you lose! " + computerSelection + " beats " + playerSelection+"!")
+            return container.textContent= "you lose! " + computerSelection + " beats " + playerSelection+"!";
+            
         }
+        
     }
 
     
 
     
 </script>
+</body>
 </html>
