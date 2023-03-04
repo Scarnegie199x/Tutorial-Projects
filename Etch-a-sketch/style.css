@@ -1,0 +1,15 @@
+sector-area {
+    display: flex;
+    flex: 1;
+    min-height: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+sector {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: white;
+
+}
