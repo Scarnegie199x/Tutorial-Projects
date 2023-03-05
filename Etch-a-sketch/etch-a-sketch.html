@@ -7,11 +7,30 @@
 </head>
 <body>
     
-
+    
+    <div id="container">
+    </div>
 
 
 </body>
     <script>
-        
+      const container = document.getElementById("container");
+
+        function changeColor(){
+            this.style.setProperty("background-color", "black");
+        }
+        function makeRows(rows, cols) {
+            container.style.setProperty('--grid-rows', rows);
+            container.style.setProperty('--grid-cols', cols);
+            for (c = 0; c < (rows * cols); c++) {
+                let cell = document.createElement("div");
+                cell.onmouseenter=changeColor;
+                container.appendChild(cell).className = "grid-item";
+            };
+        };
+
+        makeRows(16, 16);  
+
+            
     </script>
 </html>
