@@ -1,35 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Calculator</title>
-</head>
-<body>
-    <main id="calc">
-        <div id="container">
-            <div id="display"></div>
-            <button id="1">1</button>
-            <button id="2">2</button>
-            <button id="3">3</button>
-            <button id="add">+</button>
-            <button id="4">4</button>
-            <button id="5">5</button>
-            <button id="6">6</button>
-            <button id="subtract">-</button>
-            <button id="7">7</button>
-            <button id="8">8</button>
-            <button id="9">9</button>
-            <button id="multiply">X</button>
-            <button id="zero">0</button>
-            <button id="decimal">.</button>
-            <button id="divide">\</button>
-            <button id="clear">AC</button>
-            <button id="equal">=</button>
-        </div>
-    </main>
-</body>
-<script>
-    
-</script>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <main>
+                <div><h1>Calculator</h1></div>
+                <div class="screen">
+                    <p id="disp">0</p>
+                </div>
+                <div class="buttons">
+                    <button onclick="update(this)" id="7" class="digit">7</button>
+                    <button onclick="update(this)" id="8" class="digit">8</button>
+                    <button onclick="update(this)" id="9" class="digit">9</button>
+                    <button onclick="update(this)" id="del" class="de">AC</button>
+                    
+                </div>  
+                <div class="buttons">
+                    <button onclick="update(this)" id="4" class="digit">4</button>
+                    <button onclick="update(this)" id="5" class="digit">5</button>
+                    <button onclick="update(this)" id="6" class="digit">6</button>
+                    <button onclick="update(this)" id="mul" class="op">x</button>
+                </div>
+                <div class="buttons">
+                    <button onclick="update(this)" id="1" class="digit">1</button>
+                    <button onclick="update(this)" id="2" class="digit">2</button>
+                    <button onclick="update(this)" id="3" class="digit">3</button>
+                    <button onclick="update(this)" id="sub" class="op">-</button>
+                </div>
+                <div class="buttons">
+                    <button onclick="update(this)" id="0" class="digit">0</button>
+                    <button onclick="update(this)" id="sum" class="op">+</button>
+                    <button onclick="update(this)" id="div" class="op">/</button>
+                    <button onclick="update(this)" id="equal" class="op">=</button>
+                </div>
+                
+            </main>
 </html>
+
+
+
+
+
+    
+<script>
+
+let display_value = 0;
+let first_value = 0;
+let current_operation = "0";
+
+const numbers = ["0", "1", "2" ,"3" ,"4", "5", "6", "7", "8", "9"]
+
+function add(value1, value2) {
+    return value1 + value2;
+}
+
+function subtract(value1, value2) {
+    return value1 - value2;
+}
+
+function multiply(value1, value2) {
+    return value1 * value2;
+}
+
+function divide(value1, value2) {
+    return value1 / value2;
+}
+
+function operate(operator, value1, value2) {
+    let result = 0;
+    if (operator === "sum") {
+        result = add(value1, value2);
+    }
+    else if (operator === "sub") {
+        result = subtract(value1, value2);
+    }
+    else if (operator === "mul") {
+        result = multiply(value1, value2);
+    }
+    else {
+        result = divide(value1, value2);
+    }
+    return result;
+}
+
+function update(event) {
+    let turn_to_zero = 0;
+    let value = document.querySelector("id");
+    if (event.id in numbers){
+        if (display_value / 1000000000 < 1){
+            display_value = parseInt(display_value + event.id);    
+        }  
+    }
+    else if (event.id === "del"){
+        console.log("hi");
+        display_value = 0;
+        first_value = 0;
+        current_operation = "0";
+    }
+    
+    else if (event.id === "sub" || event.id === "sum" || event.id === "div" || event.id === "mul"){
+        current_operation = event.id;
+        first_value = display_value;
+        turn_to_zero = 1;
+        
+    }
+
+    else {
+        display_value = operate(current_operation, first_value, display_value);
+    }
+
+    let display = document.getElementById("disp");
+    display.textContent = display_value.toString();
+    if (turn_to_zero === 1){
+        display_value = 0;
+    }
+
+}
+
+</script>
